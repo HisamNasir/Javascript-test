@@ -11,26 +11,30 @@
 </head>
 
 <body>
-
+        <div id="notifycard" class="flex justify-end ">
+            <div class="absolute h-20 flex items-center bg-red-200 m-2 p-5">
+                You Clicked<span id="notify" class="text-red-700 font-bold"></span>
+            </div>
+        </div>
+  
     <div id="card" class="flex justify-center items-center h-screen">
-        <div
-            class=" border rounded-lg bg-yellow-100 border-black p-4 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-200 duration-300">
-            <div class=" ">
-                <img src="https://media.istockphoto.com/id/535695503/photo/pakistan-monument-islamabad.jpg?s=612x612&w=0&k=20&c=bNqjdf8L-5igcRB89DdMgx0kNOmyeo1J_zzXmoxxl8w="
-                    class=" h-[200px]"></img>
+
+        <div id="expanded" class="w-50 border rounded-lg bg-yellow-100 border-black p-4 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-200 duration-300">
+            <div id="topimage" class="">
+                <img src="https://media.istockphoto.com/id/535695503/photo/pakistan-monument-islamabad.jpg?s=612x612&w=0&k=20&c=bNqjdf8L-5igcRB89DdMgx0kNOmyeo1J_zzXmoxxl8w="></img>
             </div>
             <div class="flex space-x-10">
-                <div class="">
+                <div id="titletext" class=" w-20">
                     <h1 class=" text-2xl font-bold">Hello</h1>
                     <p>Click Me!</p>
                 </div>
-                <div class="justify-end flex w-full outline-0">
-                    <button class=" outline-0 p-2 bg-white flex items-center">
+                <div id="mainbutton" class="justify-end flex w-full outline items-center outline-0">
+                    <button onclick="closethis()" class="outline-0 p-2 bg-white rounded-full flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                        Close
+                        <span id="buttontext"></span> 
                     </button>
                 </div>
 
@@ -38,10 +42,38 @@
 
         </div>
     </div>
-</body>
-<script>
-    var card = document.getElementById('card')
 
-</script>
+
+    <script>
+         document.getElementById('notifycard').style.display = 'none';
+        function closethis() {
+           
+            if (document.getElementById('topimage').style.display === 'block') {
+                document.getElementById('topimage').style.display = 'none';
+                document.getElementById('titletext').style.display = 'none';
+                document.getElementById('mainbutton').style.margin = 'auto';
+                document.getElementById('buttontext').innerText = 'Open This';
+                var notify = document.getElementById('notifycard');
+                notify.style.display='flex';
+                setTimeout( "document.getElementById('notifycard').style.display = 'none'", 1000 );
+                document.getElementById('notify').innerText = ' _Closed Button';
+            }
+            else {
+                document.getElementById('topimage').style.display = 'block';
+                document.getElementById('titletext').style.display = 'block';
+                document.getElementById('buttontext').innerText = 'Close This';
+                var notify = document.getElementById('notifycard');
+                notify.style.display='flex';
+                setTimeout( "document.getElementById('notifycard').style.display = 'none'", 1000 );
+                document.getElementById('notify').innerText = ' _Open Button';
+            }
+
+
+
+        };
+
+    </script>
+
+</body>
 
 </html>
